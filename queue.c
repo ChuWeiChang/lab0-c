@@ -10,6 +10,7 @@ struct list_head *q_new()
     struct list_head *h = malloc(sizeof(*h));
     if (!h)
         return NULL;
+    h->next = h->prev = h;
     return h;
 }
 
