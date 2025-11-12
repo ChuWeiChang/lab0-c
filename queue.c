@@ -19,12 +19,10 @@ void q_free(struct list_head *head)
 {
     if (!head)
         return;
-    struct list_head *next = head->next;
-    do {
-        free(head);
-        head = next;
-        next = head->next;
-    } while (next);
+    struct list_head *node, *safe;
+    list_for_each_safe(node, safe, head) {
+        free(node);
+    }
 }
 
 /* Insert an element at head of queue */
